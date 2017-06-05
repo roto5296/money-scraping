@@ -19,13 +19,13 @@ if (process.argv[2] === "smbc") {
   var imageString = null;
   var form = null;
   while (flag) {
-    var ret = await hoge.login(imageString, form);
-    if (ret) {
-      fs.writeFileSync('/home/shared/tmp.jpg', ret.img, 'binary');
-      imageString = rl.question("input image string ");
-      form = ret.form;
-    } else {
+    try {
+      await hoge.login(imageString, form);
       flag = 0;
+    } catch(e) {
+      fs.writeFileSync('/home/shared/tmp.jpg', e.img, 'binary');
+      imageString = rl.question("input image string ");
+      form = e.form;
     }
   }
   var data = await hoge.getDetails(2017, 5);
