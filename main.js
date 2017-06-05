@@ -23,6 +23,10 @@ if (process.argv[2] === "smbc") {
       await hoge.login(imageString, form);
       flag = 0;
     } catch(e) {
+      if (e.message !== 'Need Image Authorization') {
+        console.log(e);
+        return;
+      }
       fs.writeFileSync('/home/shared/tmp.jpg', e.img, 'binary');
       imageString = rl.question("input image string ");
       form = e.form;
