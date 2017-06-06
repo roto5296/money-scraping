@@ -32,6 +32,6 @@ if (process.argv[2] === "smbc") {
       form = e.form;
     }
   }
-  var data = await hoge.getDetails(2017, 5);
+  var data = await hoge.getDetails(2017, 6);
   console.log(data);
 })();
