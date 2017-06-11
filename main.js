@@ -13,6 +13,10 @@ if (process.argv[2] === "smbc") {
   var hoge = new money.e_money.suica(pass.e_money.suica);
 } else if (process.argv[2] === "credit-smbc") {
   var hoge = new money.credit.smbc(pass.credit.smbc);
+} else if (process.argv[2] === "view") {
+  var hoge = new money.credit.view(pass.credit.view);
+} else if (process.argv[2] === "rakuten") {
+  var hoge = new money.credit.rakuten(pass.credit.rakuten);
 } else {
   process.exit();
 }
