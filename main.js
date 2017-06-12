@@ -17,6 +17,8 @@ if (process.argv[2] === "smbc") {
   var hoge = new money.credit.view(pass.credit.view);
 } else if (process.argv[2] === "rakuten") {
   var hoge = new money.credit.rakuten(pass.credit.rakuten);
+} else if (process.argv[2] === "pocket") {
+  var hoge = new money.credit.pocket(pass.credit.pocket);
 } else {
   process.exit();
 }
@@ -38,7 +40,7 @@ if (process.argv[2] === "smbc") {
       form = e.form;
     }
   }
-  var data = await hoge.getDetails(2017, 6);
+  var data = await hoge.getDetails(2017, 4);
   console.log(data);
   if (hoge.PJS) {
     await hoge.PJS.exit();
