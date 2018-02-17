@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
+    "commander": "^2.14.1",
     "fs": "0.0.1-security",
     "iconv": "^2.2.3",
     "jschardet": "^1.4.2",

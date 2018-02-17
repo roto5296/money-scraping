@@ -1,10 +1,12 @@
 var money = require('./index.js');
 var fs = require('fs');
 var rl = require('readline-sync');
+var commander = require('commander');
 
-var pass = JSON.parse(fs.readFileSync('password.json'));
+commander.option('-p, --password [value]', 'password JSON').parse(process.argv);
+var pass = JSON.parse(fs.readFileSync(commander.password || 'password.json'));
 var list = ['bank-smbc', 'bank-aeon', 'e_money-suica', 'credit-smbc', 'credit-view', 'credit-rakuten', 'credit-pocket']
-var type = process.argv[2];
+var type = commander.args[0];
 if (!type) {
   type = list[rl.keyInSelect(list, 'Which type? ')];
 }
@@ -33,8 +35,8 @@ case "credit-pocket":
 default:
   process.exit();
 }
-var year = parseInt(process.argv[3], 10)
-var month = parseInt(process.argv[4], 10)
+var year = parseInt(commander.args[1], 10)
+var month = parseInt(commander.args[2], 10)
 if (isNaN(year)) {
   year = rl.questionInt("year: ")
 }
