@@ -12,6 +12,7 @@ if (process.argv[2] === "smbc") {
   pass.e_money.suica.options = {"cookie": "suica-cookie.json"};
   var hoge = new money.e_money.suica(pass.e_money.suica);
 } else if (process.argv[2] === "credit-smbc") {
+  pass.credit.smbc.options = {"cookie": "smbc-cookie.json"};
   var hoge = new money.credit.smbc(pass.credit.smbc);
 } else if (process.argv[2] === "view") {
   var hoge = new money.credit.view(pass.credit.view);
@@ -40,7 +41,7 @@ if (process.argv[2] === "smbc") {
       form = e.form;
     }
   }
-  var data = await hoge.getDetails(2017, 4);
+  var data = await hoge.getDetails(2018, 1);
   console.log(data);
   if (hoge.PJS) {
     await hoge.PJS.exit();
