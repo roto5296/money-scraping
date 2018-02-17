@@ -1,10 +1,13 @@
 {
-  "name": "money",
+  "name": "money-scraping",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
+  },
+  "bin": {
+    "money-scraping": "main.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
@@ -25,6 +28,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/roto5296/money-scraping.git"
+  },
+  "author": "Roto",
   "license": "ISC"
 }
