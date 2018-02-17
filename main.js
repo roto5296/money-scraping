@@ -3,25 +3,43 @@ var fs = require('fs');
 var rl = require('readline-sync');
 
 var pass = JSON.parse(fs.readFileSync('password.json'));
-if (process.argv[2] === "smbc") {
+var list = ['bank-smbc', 'bank-aeon', 'e_money-suica', 'credit-smbc', 'credit-view', 'credit-rakuten', 'credit-pocket']
+var type = process.argv[2];
+if (!type) {
+  type = list[rl.keyInSelect(list, 'Which type? ')];
+}
+switch (type) {
+case "bank-smbc":
   var hoge = new money.bank.smbc(pass.bank.smbc);
-} else if (process.argv[2] === "aeon") {
-  pass.bank.aeon.options = {"cookie": "aeon-cookie.json"};
+  break;
+case "bank-aeon":
   var hoge = new money.bank.aeon(pass.bank.aeon);
-} else if (process.argv[2] === "suica") {
-  pass.e_money.suica.options = {"cookie": "suica-cookie.json"};
+  break;
+case "e_money-suica":
   var hoge = new money.e_money.suica(pass.e_money.suica);
-} else if (process.argv[2] === "credit-smbc") {
-  pass.credit.smbc.options = {"cookie": "smbc-cookie.json"};
+  break;
+case"credit-smbc":
   var hoge = new money.credit.smbc(pass.credit.smbc);
-} else if (process.argv[2] === "view") {
+  break;
+case "credit-view":
   var hoge = new money.credit.view(pass.credit.view);
-} else if (process.argv[2] === "rakuten") {
+  break;
+case "credit-rakuten":
   var hoge = new money.credit.rakuten(pass.credit.rakuten);
-} else if (process.argv[2] === "pocket") {
+  break;
+case "credit-pocket":
   var hoge = new money.credit.pocket(pass.credit.pocket);
-} else {
+  break;
+default:
   process.exit();
+}
+var year = parseInt(process.argv[3], 10)
+var month = parseInt(process.argv[4], 10)
+if (isNaN(year)) {
+  year = rl.questionInt("year: ")
+}
+if (isNaN(month)) {
+  month = rl.questionInt("month: ")
 }
 (async ()=>{
   var flag = 1;
@@ -41,7 +59,7 @@ if (process.argv[2] === "smbc") {
       form = e.form;
     }
   }
-  var data = await hoge.getDetails(2018, 1);
+  var data = await hoge.getDetails(year, month);
   console.log(data);
   if (hoge.PJS) {
     await hoge.PJS.exit();
