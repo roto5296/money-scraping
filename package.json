@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.1",
     "commander": "^2.14.1",
     "fs": "0.0.1-security",
+    "google-auth-library": "^1.2.1",
     "iconv": "^2.2.3",
     "jschardet": "^1.4.2",
     "phantom": "^4.0.4",
@@ -21,7 +22,8 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "require-promise": "^1.0.1",
-    "tough-cookie-filestore": "0.0.1",
+    "tough-cookie-file-store": "^1.2.0",
+    "tough-cookie-google-drive-store": "github:roto5296/tough-cookie-google-drive-store",
     "url": "^0.11.0"
   },
   "devDependencies": {},
