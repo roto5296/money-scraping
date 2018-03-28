@@ -24,6 +24,9 @@ case "bank-aeon":
   pass.bank.aeon.options.cookie_auth = auth;
   var hoge = new money.bank.aeon(pass.bank.aeon);
   break;
+case "bank-ufj":
+  var hoge = new money.bank.ufj(pass.bank.ufj);
+  break;
 case "e_money-suica":
   pass.e_money.suica.options.cookie_auth = auth;
   var hoge = new money.e_money.suica(pass.e_money.suica);
