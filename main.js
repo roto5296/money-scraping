@@ -14,7 +14,7 @@ var googleAuth = require('google-auth-library');
     pass.googleapi.web.redirect_uris[0]);
   auth.credentials.refresh_token = pass.googleapi.refresh_token;
   await auth.refreshAccessToken();
-  var list = ['bank-smbc', 'bank-aeon', 'e_money-suica', 'credit-smbc', 'credit-view', 'credit-rakuten', 'credit-pocket', 'credit-line']
+  var list = ['bank-smbc', 'bank-aeon', 'bank-ufj', 'bank-ashikaga', 'e_money-suica', 'credit-smbc', 'credit-view', 'credit-rakuten', 'credit-pocket', 'credit-line']
   var type = commander.args[0];
   if (!type) {
     type = list[rl.keyInSelect(list, 'Which type? ')];
@@ -31,6 +31,9 @@ var googleAuth = require('google-auth-library');
     pass.bank.ufj.options = {};
     pass.bank.ufj.options.gmail_auth = auth;
     var hoge = new money.bank.ufj(pass.bank.ufj);
+    break;
+  case "bank-ashikaga":
+    var hoge = new money.bank.ashikaga(pass.bank.ashikaga);
     break;
   case "e_money-suica":
     pass.e_money.suica.options.cookie_auth = auth;
