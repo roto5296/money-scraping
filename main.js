@@ -14,7 +14,7 @@ var googleAuth = require('google-auth-library');
     pass.googleapi.web.redirect_uris[0]);
   auth.credentials.refresh_token = pass.googleapi.refresh_token;
   await auth.refreshAccessToken();
-  var list = ['bank-smbc', 'bank-aeon', 'bank-ufj', 'bank-ashikaga', 'e_money-suica', 'credit-smbc', 'credit-view', 'credit-rakuten', 'credit-pocket', 'credit-line']
+  var list = ['bank-smbc', 'bank-aeon', 'bank-ufj', 'bank-ashikaga', 'e_money-suica', 'credit-smbc', 'credit-view', 'credit-rakuten', 'credit-pocket', 'credit-line', 'credit-kyash']
   var type = commander.args[0];
   if (!type) {
     type = list[rl.keyInSelect(list, 'Which type? ')];
@@ -53,6 +53,9 @@ var googleAuth = require('google-auth-library');
     break;
   case "credit-line":
     var hoge = new money.credit.line(pass.credit.line);
+    break;
+  case "credit-kyash":
+    var hoge = new money.credit.kyash(pass.credit.kyash);
     break;
   default:
     process.exit();
